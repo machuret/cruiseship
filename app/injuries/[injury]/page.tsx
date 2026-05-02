@@ -32,8 +32,8 @@ export default async function InjuryHub({ params }: { params: Promise<{ injury: 
   const lastUpdated = getLastUpdated();
 
   // Pick deterministic variants based on injury slug
-  const legalBg = pickVariant(injury, legalBackgroundVariants);
-  const compText = pickVariant(injury, compensationVariants);
+  const legalBg = pickVariant(legalBackgroundVariants, injury);
+  const compText = pickVariant(compensationVariants, injury);
   
   // Select case studies deterministically based on injury hash
   let hash = 0;
