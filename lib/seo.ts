@@ -61,7 +61,7 @@ export function buildInjuryDescription(injury: AccidentType): string {
 }
 
 export function buildCanonical(path: string): string {
-  return `https://www.cruiseshipinjurylawyer.com${path}`;
+  return `https://cruiseshipinjurycases.com${path}`;
 }
 
 // Generate fresh "Last Updated" date

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { cruiseLines, accidentTypes, destinations } from "@/data/site-data";
 
-const BASE_URL = "https://www.cruiseshipinjurylawyer.com";
+const BASE_URL = "https://cruiseshipinjurycases.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
