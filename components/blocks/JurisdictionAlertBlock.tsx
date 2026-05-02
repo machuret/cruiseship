@@ -2,6 +2,26 @@ interface JurisdictionAlertBlockProps {
   deadlineMonths: number;
 }
 
+function WarningIcon() {
+  return (
+    <svg 
+      width="64" 
+      height="64" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="#dc2626" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+      <path d="M12 9v4" />
+      <path d="M12 17h.01" />
+    </svg>
+  );
+}
+
 export function JurisdictionAlertBlock({ deadlineMonths }: JurisdictionAlertBlockProps) {
   const currentDate = new Date();
   const deadlineDate = new Date(currentDate.setMonth(currentDate.getMonth() + deadlineMonths));
@@ -11,11 +31,13 @@ export function JurisdictionAlertBlock({ deadlineMonths }: JurisdictionAlertBloc
   });
 
   return (
-    <section className="section" style={{ background: "#fef2f2", padding: "48px 0" }}>
+    <section className="section" style={{ background: "#fef2f2", padding: "48px 0" }} role="alert" aria-live="polite">
       <div className="container">
         <div className="card" style={{ border: "3px solid #dc2626", background: "white", boxShadow: "0 4px 20px rgba(220, 38, 38, 0.15)" }}>
           <div style={{ display: "flex", gap: "24px", alignItems: "flex-start", flexWrap: "wrap" }}>
-            <div style={{ fontSize: "64px", lineHeight: 1 }}>⚠️</div>
+            <div style={{ flexShrink: 0 }}>
+              <WarningIcon />
+            </div>
             <div style={{ flex: 1, minWidth: "280px" }}>
               <h2 className="h2" style={{ margin: "0 0 16px", color: "#dc2626" }}>Critical Deadline: Act Before {deadlineString}</h2>
               

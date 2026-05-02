@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { cruiseLines, accidentTypes, destinations } from "@/data/site-data";
-
-// Trigger redeploy
 import { getLastUpdated } from "@/lib/seo";
 import { JurisdictionAlertBlock } from "@/components/blocks/JurisdictionAlertBlock";
 import { LeadFormBlock } from "@/components/blocks/LeadFormBlock";

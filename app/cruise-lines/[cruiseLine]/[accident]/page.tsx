@@ -57,6 +57,15 @@ export async function generateMetadata({ params }: { params: Promise<{ cruiseLin
   };
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+}
+
 export default async function CruiseLineAccidentPage({ params }: { params: Promise<{ cruiseLine: string; accident: string }> }) {
   const { cruiseLine, accident } = await params;
   const data = buildCruiseAccidentPageData(cruiseLine, accident);
@@ -67,9 +76,9 @@ export default async function CruiseLineAccidentPage({ params }: { params: Promi
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {"@type": "ListItem", position: 1, name: "Cruise Lines", item: "https://www.cruiseshipinjurylawyer.com/cruise-lines"},
-      {"@type": "ListItem", position: 2, name: data.cruiseLine.name, item: `https://www.cruiseshipinjurylawyer.com/cruise-lines/${data.cruiseLine.slug}`},
-      {"@type": "ListItem", position: 3, name: data.accident.name, item: `https://www.cruiseshipinjurylawyer.com/cruise-lines/${data.cruiseLine.slug}/${data.accident.slug}`}
+      {"@type": "ListItem", position: 1, name: "Cruise Lines", item: buildCanonical("/cruise-lines")},
+      {"@type": "ListItem", position: 2, name: data.cruiseLine.name, item: buildCanonical(`/cruise-lines/${data.cruiseLine.slug}`)},
+      {"@type": "ListItem", position: 3, name: data.accident.name, item: buildCanonical(`/cruise-lines/${data.cruiseLine.slug}/${data.accident.slug}`)}
     ]
   };
 
@@ -126,10 +135,10 @@ export default async function CruiseLineAccidentPage({ params }: { params: Promi
 
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalServiceJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lastUpdatedJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(breadcrumbJsonLd)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(legalServiceJsonLd)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(faqJsonLd)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(lastUpdatedJsonLd)) }} />
       
       <section className="hero">
         <div className="container">
