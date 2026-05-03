@@ -1,0 +1,13 @@
+{
+  "slug": "burn-injuries",
+  "name": "Burn Injuries (Galley, Hot Liquids, Steam)",
+  "overview": "Burn injuries on cruise ships often occur in dining areas from hot food spills, steam exposure, or galley-related incidents.",
+  "evidenceChecklist": [
+    "Photos of burn area and cause",
+    "Temperature records if equipment-related",
+    "Witness statements",
+    "Medical treatment documentation",
+    "Staff training records"
+  ],
+  "riskFactors": ["Excessively hot food temperatures", "Unprotected steam vents", "Improper food service procedures", "Defective equipment"]
+}

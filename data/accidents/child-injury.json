@@ -1,0 +1,13 @@
+{
+  "slug": "child-injury",
+  "name": "Child Injury in Kids' Activity Zones",
+  "overview": "Children's activity area injuries raise questions about age-appropriate supervision, equipment safety, and staff qualifications.",
+  "evidenceChecklist": [
+    "Activity area photos showing safety measures",
+    "Staff-to-child ratios documentation",
+    "Staff background checks and training",
+    "Age-appropriate activity policies",
+    "Incident supervision documentation"
+  ],
+  "riskFactors": ["Inadequate supervision ratios", "Unsafe equipment", "Untrained staff", "Lack of age-appropriate activities"]
+}

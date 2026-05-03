@@ -1,0 +1,13 @@
+{
+  "slug": "stairway-fall",
+  "name": "Stairway and Railing Falls",
+  "overview": "Stairway accidents on cruise ships often involve broken railings, poor lighting, uneven steps, or slippery surfaces from cleaning.",
+  "evidenceChecklist": [
+    "Photos of stairway and railing condition",
+    "Lighting assessment documentation",
+    "Maintenance records if accessible",
+    "Witness contact details",
+    "Security incident report"
+  ],
+  "riskFactors": ["Broken or loose railings", "Poor lighting on stairs", "Uneven or damaged steps", "Wet or slippery surfaces"]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "electrical-shock",
+  "name": "Electrical Shock Incidents",
+  "overview": "Electrical shock incidents on cruise ships can result from faulty cabin outlets, pool lighting, or damaged electrical equipment.",
+  "evidenceChecklist": [
+    "Photos of electrical hazard",
+    "Equipment involved identification",
+    "Maintenance records for equipment",
+    "Witness statements",
+    "Engineering inspection reports"
+  ],
+  "riskFactors": ["Faulty wiring", "Inadequate grounding", "Defective electrical equipment", "Water exposure to electrical systems"]
+}

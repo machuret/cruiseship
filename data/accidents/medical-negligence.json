@@ -1,0 +1,13 @@
+{
+  "slug": "medical-negligence",
+  "name": "Medical Negligence Onboard",
+  "overview": "Ship doctors and medical staff must provide competent care; negligence in diagnosis or treatment can worsen passenger conditions.",
+  "evidenceChecklist": [
+    "Medical records from ship infirmary",
+    "Doctor credentials and qualifications",
+    "Treatment protocols followed",
+    "Follow-up care documentation",
+    "Independent medical expert review"
+  ],
+  "riskFactors": ["Inadequate medical facilities", "Unqualified medical staff", "Delayed diagnosis", "Improper treatment protocols"]
+}

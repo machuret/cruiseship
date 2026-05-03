@@ -1,0 +1,6 @@
+{
+  "slug": "panama-canal",
+  "name": "Panama Canal",
+  "description": "Engineering marvel connecting Atlantic and Pacific oceans",
+  "ports": ["Panama City", "Colon", "Cartagena", "Puntarenas"]
+}

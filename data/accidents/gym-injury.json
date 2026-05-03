@@ -1,0 +1,13 @@
+{
+  "slug": "gym-injury",
+  "name": "Gym and Fitness Equipment Injuries",
+  "overview": "Fitness center injuries on cruise ships may involve defective equipment, improper maintenance, or lack of safety instructions.",
+  "evidenceChecklist": [
+    "Equipment identification and photos",
+    "Maintenance records",
+    "Warning signage photos",
+    "Staff presence documentation",
+    "Similar equipment incident reports"
+  ],
+  "riskFactors": ["Defective exercise equipment", "Inadequate maintenance", "Lack of safety instructions", "Unsupervised use"]
+}

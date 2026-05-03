@@ -1,0 +1,13 @@
+{
+  "slug": "inadequate-security",
+  "name": "Inadequate Security Incidents",
+  "overview": "Cruise lines have a duty to provide reasonable security; failures can lead to theft, assault, or other criminal incidents.",
+  "evidenceChecklist": [
+    "Security staffing records",
+    "Surveillance coverage maps",
+    "Previous incident reports in same area",
+    "Industry security standards",
+    "Security response documentation"
+  ],
+  "riskFactors": ["Insufficient security personnel", "Poor surveillance coverage", "Inadequate lighting", "Slow response times"]
+}

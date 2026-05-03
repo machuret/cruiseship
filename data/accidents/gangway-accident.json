@@ -1,0 +1,13 @@
+{
+  "slug": "gangway-accident",
+  "name": "Gangway Embarkation/Disembarkation Accidents",
+  "overview": "Gangway accidents during boarding and disembarking can cause serious falls and injuries due to improper setup or supervision.",
+  "evidenceChecklist": [
+    "Gangway angle and security photos",
+    "Weather conditions at time",
+    "Crew supervision documentation",
+    "Alternative boarding procedures available",
+    "Medical treatment records"
+  ],
+  "riskFactors": ["Steep gangway angles", "Inadequate handrails", "Slippery surfaces", "Insufficient crew assistance"]
+}

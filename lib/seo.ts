@@ -41,7 +41,7 @@ export function getSettlementRange(accidentSlug: string): { min: string; max: st
 export function buildTitle(data: PagePayload): string {
   const range = getSettlementRange(data.accident.slug);
   // Include settlement range in title for higher CTR
-  return `${data.cruiseLine.name} ${data.accident.name} Settlements | ${range.min}-${range.max}+ Range`;
+  return `${data.cruiseLine.name} ${data.accident.name} Legal Help | ${range.min}-${range.max}+ Recovery`;
 }
 
 export function buildDescription(data: PagePayload): string {

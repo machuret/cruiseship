@@ -1,0 +1,13 @@
+{
+  "slug": "excursion-activity",
+  "name": "Excursion Activity Injuries",
+  "overview": "Activities like zip-lining, scuba diving, ATV riding, and snorkeling during excursions carry inherent risks that operators must manage safely.",
+  "evidenceChecklist": [
+    "Activity waiver documents",
+    "Equipment inspection records",
+    "Guide/instructor credentials",
+    "Weather conditions at time of activity",
+    "Photos of activity location"
+  ],
+  "riskFactors": ["Inadequate safety briefings", "Defective equipment", "Inexperienced guides", "Poor weather conditions"]
+}

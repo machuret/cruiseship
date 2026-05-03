@@ -1,0 +1,13 @@
+{
+  "slug": "water-slide",
+  "name": "Water Slide Injuries",
+  "overview": "Water slide injuries can include head trauma, spinal injuries, and drowning, often due to improper design, operation, or supervision.",
+  "evidenceChecklist": [
+    "Slide design and inspection records",
+    "Photos of slide and surrounding area",
+    "Weight/height restrictions signage",
+    "Operator training records",
+    "Similar incident reports"
+  ],
+  "riskFactors": ["Improper slide design", "Inadequate supervision", "Failure to enforce size restrictions", "Poor maintenance"]
+}

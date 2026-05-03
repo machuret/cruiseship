@@ -1,0 +1,13 @@
+{
+  "slug": "mold-exposure",
+  "name": "Mold / Toxic Exposure in Cabins",
+  "overview": "Mold and toxic exposure in cruise ship cabins can cause respiratory issues and other health problems from poor ventilation.",
+  "evidenceChecklist": [
+    "Photos of visible mold or moisture",
+    "Air quality test results if available",
+    "Cabin maintenance history",
+    "Medical symptoms documentation",
+    "Previous passenger complaints for cabin"
+  ],
+  "riskFactors": ["Poor ventilation systems", "Water leaks and moisture", "Inadequate cleaning", "Cabin location"]
+}

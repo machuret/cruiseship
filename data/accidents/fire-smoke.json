@@ -1,0 +1,13 @@
+{
+  "slug": "fire-smoke",
+  "name": "Fire and Smoke Inhalation Injuries",
+  "overview": "Ship fires and smoke inhalation injuries can cause serious respiratory damage and raise questions about fire safety systems.",
+  "evidenceChecklist": [
+    "Fire origin and cause investigation",
+    "Smoke detector and alarm records",
+    "Fire suppression system records",
+    "Evacuation procedures followed",
+    "Medical treatment for smoke inhalation"
+  ],
+  "riskFactors": ["Electrical malfunctions", "Improper storage of flammables", "Faulty fire suppression", "Inadequate detection systems"]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "delayed-evacuation",
+  "name": "Delayed Evacuation / Emergency Response Failures",
+  "overview": "Delayed or failed emergency responses during fires, medical emergencies, or other crises can result in preventable injuries or deaths.",
+  "evidenceChecklist": [
+    "Emergency response timeline",
+    "Crew training records",
+    "Drill and inspection records",
+    "Communication logs during emergency",
+    "Industry emergency response standards"
+  ],
+  "riskFactors": ["Inadequate crew training", "Poor communication systems", "Equipment failures", "Lack of emergency drills"]
+}

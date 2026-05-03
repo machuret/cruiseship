@@ -1,0 +1,6 @@
+{
+  "slug": "transatlantic",
+  "name": "Transatlantic / Repositioning",
+  "description": "Ocean crossings between Europe and the Americas",
+  "ports": ["Southampton", "New York", "Miami", "Barcelona"]
+}

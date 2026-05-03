@@ -1,0 +1,13 @@
+{
+  "slug": "drowning",
+  "name": "Drowning / Near-Drowning",
+  "overview": "Pool and ocean drowning incidents on cruise ships raise questions about lifeguard presence, safety barriers, and emergency response.",
+  "evidenceChecklist": [
+    "Pool/ocean area photos showing safety measures",
+    "Lifeguard staffing records",
+    "Emergency response timeline",
+    "Surveillance footage",
+    "Passenger behavior witness accounts"
+  ],
+  "riskFactors": ["Inadequate lifeguard coverage", "Lack of safety barriers", "Poor visibility conditions", "Delayed emergency response"]
+}

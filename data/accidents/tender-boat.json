@@ -1,0 +1,13 @@
+{
+  "slug": "tender-boat",
+  "name": "Tender Boat Transfer Injuries",
+  "overview": "Transferring between cruise ships and tender boats presents significant fall and injury risks due to vessel movement and unstable platforms.",
+  "evidenceChecklist": [
+    "Photos of transfer conditions",
+    "Weather and sea state records",
+    "Crew member names involved",
+    "Tender boat operator information",
+    "Medical documentation"
+  ],
+  "riskFactors": ["Unstable transfer platforms", "Rough sea conditions", "Inadequate crew assistance", "Vessel movement"]
+}

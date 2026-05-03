@@ -1,0 +1,13 @@
+{
+  "slug": "elevator-escalator",
+  "name": "Elevator/Escalator Accidents",
+  "overview": "Malfunctioning elevators and escalators can cause serious injuries including falls, entrapment, and crushing incidents.",
+  "evidenceChecklist": [
+    "Equipment maintenance logs",
+    "Photos of malfunctioning components",
+    "Other passenger incident reports",
+    "Ship's engineering records",
+    "Surveillance footage"
+  ],
+  "riskFactors": ["Equipment malfunction", "Inadequate maintenance", "Entrapment hazards", "Sudden stops or movements"]
+}

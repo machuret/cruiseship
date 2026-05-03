@@ -1,0 +1,13 @@
+{
+  "slug": "assault-crew",
+  "name": "Assault by Crew Member",
+  "overview": "Crew assault incidents are particularly serious given the employer-employee relationship and cruise line's duty to supervise.",
+  "evidenceChecklist": [
+    "Crew member name and position",
+    "Human resources records if accessible",
+    "Security incident report",
+    "Witness statements",
+    "Crew member employment history"
+  ],
+  "riskFactors": ["Inadequate background checks", "Poor crew supervision", "Lack of security protocols", "Failure to respond to complaints"]
+}

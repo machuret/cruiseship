@@ -46,15 +46,33 @@ export default async function InjuryHub({ params }: { params: Promise<{ injury: 
 
   return (
     <main>
-      <section className="hero">
-        <div className="container">
-          <nav className="small"><Link href="/injuries">Injuries</Link> / {injuryType.name}</nav>
-          <h1 className="h1">{injuryType.name} Settlements & Legal Guide</h1>
-          <p>{injuryType.overview}</p>
-          <a className="cta-button" href="#case-review">Get Free Case Review</a>
-          <p className="small" style={{ marginTop: "16px", opacity: 0.7 }}>Updated {lastUpdated} for 2026 cruise season</p>
+      <header className="page-header">
+        <div className="page-header__inner container">
+          <div className="page-header__content">
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <Link href="/" className="breadcrumb__link">Home</Link>
+              <span className="breadcrumb__sep">/</span>
+              <Link href="/injuries" className="breadcrumb__link">Injuries</Link>
+              <span className="breadcrumb__sep">/</span>
+              <span className="breadcrumb__current">{injuryType.name}</span>
+            </nav>
+
+            <span className="tag">Injury Guide</span>
+
+            <h1 className="page-header__title">{injuryType.name} <em className="text-accent">Settlements & Legal Guide</em></h1>
+
+            <p className="page-header__lead">{injuryType.overview}</p>
+
+            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginTop: "var(--space-6)" }}>
+              <a href="#case-review" className="btn btn--primary btn--large">Get Free Case Review</a>
+            </div>
+
+            <p className="text-body-sm mt-6" style={{ opacity: 0.7 }}>
+              Updated {lastUpdated} for 2026 cruise season
+            </p>
+          </div>
         </div>
-      </section>
+      </header>
 
       <JurisdictionAlertBlock deadlineMonths={6} />
 
@@ -65,17 +83,25 @@ export default async function InjuryHub({ params }: { params: Promise<{ injury: 
         factors={settlementFactors}
       />
 
-      <section className="section">
+      <section className="section px-5vw">
         <div className="container">
-          <h2 className="h2">Legal Background</h2>
-          <p>{legalBg}</p>
-          <div className="card" style={{ marginTop: "24px", background: "#f8faff" }}>
-            <h3 className="h3" style={{ fontSize: "18px" }}>Key Legal Principles</h3>
-            <ul>
-              <li><strong>Duty of Care:</strong> Cruise lines must maintain reasonably safe conditions</li>
-              <li><strong>Notice Requirement:</strong> Written notice must be given within 6 months</li>
-              <li><strong>Statute of Limitations:</strong> Lawsuit must be filed within 1 year</li>
-              <li><strong>Forum Selection:</strong> Most cases filed in Miami Federal Court</li>
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Legal Info
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">Legal Background</h2>
+            </div>
+          </div>
+          <p className="text-body-lg mb-6">{legalBg}</p>
+          <div className="card" style={{ borderLeft: "3px solid var(--color-gold-500)" }}>
+            <h3 className="card__title" style={{ fontSize: "var(--text-lg)" }}>Key Legal Principles</h3>
+            <ul className="text-body-base" style={{ paddingLeft: "var(--space-6)", marginTop: "var(--space-4)" }}>
+              <li className="mb-2"><strong>Duty of Care:</strong> Cruise lines must maintain reasonably safe conditions</li>
+              <li className="mb-2"><strong>Notice Requirement:</strong> Written notice must be given within 6 months</li>
+              <li className="mb-2"><strong>Statute of Limitations:</strong> Lawsuit must be filed within 1 year</li>
+              <li className="mb-2"><strong>Forum Selection:</strong> Most cases filed in Miami Federal Court</li>
               <li><strong>Comparative Negligence:</strong> Your recovery may be reduced if partially at fault</li>
             </ul>
           </div>
@@ -84,62 +110,84 @@ export default async function InjuryHub({ params }: { params: Promise<{ injury: 
 
       <CaseStudiesBlock caseStudies={selectedStudies} />
 
-      <section className="section alt">
+      <section className="section px-5vw" style={{ background: "var(--color-bg-secondary)" }}>
         <div className="container">
-          <h2 className="h2">Potential Compensation</h2>
-          <p>{compText}</p>
-          <h3 className="h3" style={{ marginTop: "24px" }}>Compensation Categories</h3>
-          <div className="card-grid">
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Compensation
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">Potential Compensation</h2>
+            </div>
+          </div>
+          <p className="text-body-lg mb-6">{compText}</p>
+          <h3 className="text-heading-4 mb-6">Compensation Categories</h3>
+          <div className="grid-2" style={{ gap: "var(--space-4)" }}>
             <div className="card">
-              <h4 style={{ fontFamily: "var(--font-heading)", margin: "0 0 8px" }}>Medical Expenses</h4>
-              <p className="small" style={{ margin: 0 }}>Emergency care, surgery, rehabilitation, prescriptions, therapy</p>
+              <h4 className="card__title" style={{ fontSize: "var(--text-lg)" }}>Medical Expenses</h4>
+              <p className="card__body">Emergency care, surgery, rehabilitation, prescriptions, therapy</p>
             </div>
             <div className="card">
-              <h4 style={{ fontFamily: "var(--font-heading)", margin: "0 0 8px" }}>Lost Income</h4>
-              <p className="small" style={{ margin: 0 }}>Wages lost during recovery and reduced future earning capacity</p>
+              <h4 className="card__title" style={{ fontSize: "var(--text-lg)" }}>Lost Income</h4>
+              <p className="card__body">Wages lost during recovery and reduced future earning capacity</p>
             </div>
             <div className="card">
-              <h4 style={{ fontFamily: "var(--font-heading)", margin: "0 0 8px" }}>Pain & Suffering</h4>
-              <p className="small" style={{ margin: 0 }}>Physical pain, emotional distress, anxiety, PTSD, loss of enjoyment</p>
+              <h4 className="card__title" style={{ fontSize: "var(--text-lg)" }}>Pain & Suffering</h4>
+              <p className="card__body">Physical pain, emotional distress, anxiety, PTSD, loss of enjoyment</p>
             </div>
             <div className="card">
-              <h4 style={{ fontFamily: "var(--font-heading)", margin: "0 0 8px" }}>Punitive Damages</h4>
-              <p className="small" style={{ margin: 0 }}>Additional awards in cases of gross negligence or willful misconduct</p>
+              <h4 className="card__title" style={{ fontSize: "var(--text-lg)" }}>Punitive Damages</h4>
+              <p className="card__body">Additional awards in cases of gross negligence or willful misconduct</p>
             </div>
           </div>
         </div>
       </section>
 
-      <CommonMistakesBlock mistakes={commonMistakeVariants} />
+      <TimelineCalculatorBlock timeline={["Seek immediate medical attention", "Report incident to ship security", "Document the scene with photos", "Gather witness contact information", "Contact maritime attorney", "File notice within 6 months", "Pursue settlement or lawsuit"]} cruiseLineName="Major Cruise Lines" accidentName={injuryType.name} />
 
-      <TimelineCalculatorBlock phases={timelinePhases} />
-
-      <section className="section">
+      <section className="section px-5vw">
         <div className="container">
-          <h2 className="h2">How to Contact a Lawyer</h2>
-          <div className="card" style={{ background: "#f0fdf4", border: "2px solid #22c55e" }}>
-            <ol style={{ paddingLeft: "24px", margin: 0 }}>
-              <li style={{ marginBottom: "16px" }}><strong>Collect all medical records</strong> from ship infirmary and post-cruise treatment</li>
-              <li style={{ marginBottom: "16px" }}><strong>Save your ticket contract</strong> and all cruise documentation</li>
-              <li style={{ marginBottom: "16px" }}><strong>Document everything</strong> - photos, witness contacts, incident reports</li>
-              <li style={{ marginBottom: "16px" }}><strong>Don't sign anything</strong> from the cruise line without attorney review</li>
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Next Steps
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">How to Contact a Lawyer</h2>
+            </div>
+          </div>
+          <div className="card" style={{ borderLeft: "3px solid var(--color-gold-500)" }}>
+            <ol className="text-body-lg" style={{ paddingLeft: "var(--space-6)", margin: 0 }}>
+              <li className="mb-4"><strong>Collect all medical records</strong> from ship infirmary and post-cruise treatment</li>
+              <li className="mb-4"><strong>Save your ticket contract</strong> and all cruise documentation</li>
+              <li className="mb-4"><strong>Document everything</strong> - photos, witness contacts, incident reports</li>
+              <li className="mb-4"><strong>Don't sign anything</strong> from the cruise line without attorney review</li>
               <li><strong>Request a free lawyer review immediately</strong> - time limits are shorter than you think</li>
             </ol>
           </div>
-          <div style={{ textAlign: "center", marginTop: "32px" }}>
-            <a className="cta-button" href="#case-review" style={{ fontSize: "18px", padding: "16px 32px" }}>Start Your Free Case Review</a>
-            <p className="small" style={{ marginTop: "16px" }}>No fee unless we win. Confidential consultation.</p>
+          <div className="mt-8" style={{ textAlign: "center" }}>
+            <a href="#case-review" className="btn btn--primary btn--large">Start Your Free Case Review</a>
+            <p className="text-body-sm mt-4">No fee unless we win. Confidential consultation.</p>
           </div>
         </div>
       </section>
 
-      <section className="section alt">
+      <section className="section px-5vw" style={{ background: "var(--color-bg-secondary)" }}>
         <div className="container">
-          <h2 className="h2">Common Risk Factors for {injuryType.name}</h2>
-          <p>Understanding what caused your injury can strengthen your case. These factors are commonly associated with {injuryType.name.toLowerCase()} on cruise ships:</p>
-          <div className="card-grid" style={{ marginTop: "24px" }}>
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Risk Factors
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">Common Risk Factors for {injuryType.name}</h2>
+            </div>
+          </div>
+          <p className="text-body-lg mb-6">Understanding what caused your injury can strengthen your case. These factors are commonly associated with {injuryType.name.toLowerCase()} on cruise ships:</p>
+          <div className="grid-2" style={{ gap: "var(--space-4)" }}>
             {injuryType.riskFactors.map((r) => (
-              <div key={r} className="card" style={{ borderLeft: "4px solid var(--color-primary)" }}>
+              <div key={r} className="card" style={{ borderLeft: "3px solid var(--color-gold-500)" }}>
                 <p style={{ margin: 0, fontWeight: 500 }}>{r}</p>
               </div>
             ))}
@@ -149,13 +197,14 @@ export default async function InjuryHub({ params }: { params: Promise<{ injury: 
 
       <LeadFormBlock />
 
-      <section className="section" style={{ background: "#f8faff", textAlign: "center" }}>
-        <div className="container">
-          <h2 className="h2">Ready to Pursue Your Claim?</h2>
-          <p>Don't miss the deadline. Cruise injury claims have strict time limits.</p>
-          <a className="cta-button" href="#case-review">Get Free Case Review</a>
-          <p className="small" style={{ marginTop: "16px" }}>Last updated: {lastUpdated} | Maritime Legal Review Board</p>
+      <section className="cta" aria-labelledby="injury-cta-heading">
+        <span className="tag" style={{ justifyContent: "center", display: "inline-flex" }}>Ready to Start?</span>
+        <h2 id="injury-cta-heading" className="cta__title">Ready to Pursue Your <em className="text-accent">Claim?</em></h2>
+        <p className="cta__text">Don't miss the deadline. Cruise injury claims have strict time limits.</p>
+        <div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="#case-review" className="btn btn--primary btn--large">Get Free Case Review</a>
         </div>
+        <p className="text-body-sm mt-6">Last updated: {lastUpdated} | Maritime Legal Review Board</p>
       </section>
     </main>
   );

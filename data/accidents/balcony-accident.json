@@ -1,0 +1,13 @@
+{
+  "slug": "balcony-accident",
+  "name": "Cabin Balcony Accidents",
+  "overview": "Balcony accidents can involve falls from heights, railing collapses, or objects falling from upper decks onto balconies below.",
+  "evidenceChecklist": [
+    "Railing height and condition photos",
+    "Engineering specifications",
+    "Weather conditions at time",
+    "Witness statements",
+    "Similar cabin incident reports"
+  ],
+  "riskFactors": ["Inadequate railing heights", "Structural defects", "Slippery surfaces", "Falling objects from above"]
+}

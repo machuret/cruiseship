@@ -1,0 +1,13 @@
+{
+  "slug": "food-poisoning",
+  "name": "Food Poisoning / Norovirus Outbreaks",
+  "overview": "Cruise ship food poisoning and norovirus outbreaks can affect hundreds of passengers. Cruise lines have a duty to maintain proper food safety protocols.",
+  "evidenceChecklist": [
+    "Medical records documenting illness",
+    "Documentation of food consumed",
+    "Other affected passengers contact info",
+    "Photos of unsanitary conditions",
+    "CDC or health department reports"
+  ],
+  "riskFactors": ["Improper food storage temperatures", "Cross-contamination in kitchens", "Infected food handlers", "Buffet line contamination"]
+}

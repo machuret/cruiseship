@@ -667,59 +667,103 @@ export function getRelatedAccidents(currentSlug: string, count: number = 12): Ac
 export function buildCruiseAccidentPageData(cruiseLineSlug: string, accidentSlug: string): PagePayload | null {
   const cruiseLine = getCruiseLineBySlug(cruiseLineSlug);
   const accident = getAccidentBySlug(accidentSlug);
-  
+
   if (!cruiseLine || !accident) return null;
 
   const relatedAccidents = getRelatedAccidents(accidentSlug, 12);
 
+  // Generate comprehensive 300+ word intro based on cruise line and accident type
+  const generateComprehensiveIntro = (cruiseLine: CruiseLine, accident: AccidentType): string => {
+    const riskFactorsText = accident.riskFactors.slice(0, 3).join("; ");
+
+    return `If you or a loved one suffered ${accident.name.toLowerCase()} while sailing aboard a ${cruiseLine.name} vessel, you may be entitled to significant compensation under maritime law. Cruise lines like ${cruiseLine.name} have a legal duty of care to maintain reasonably safe conditions for all passengers aboard their ships. When they fail in this duty through negligence, poor maintenance, inadequate staffing, or insufficient safety protocols, they can be held financially responsible for the injuries and damages that result.
+
+${accident.overview} These incidents commonly involve ${riskFactorsText}. Such accidents can result in serious injuries including fractures, traumatic brain injuries, spinal cord damage, and in severe cases, permanent disability or death. Victims often face substantial medical expenses, lost wages from inability to work, ongoing rehabilitation costs, and significant pain and suffering.
+
+Under maritime law, also known as admiralty law, cruise lines owe passengers a duty of reasonable care under the circumstances. This legal standard requires cruise operators to maintain their vessels in a reasonably safe condition, provide adequate warnings of known hazards, and take reasonable steps to protect passengers from foreseeable harm. When ${cruiseLine.name} breaches this duty and a passenger is injured as a result, the cruise line may be held liable for damages.
+
+Cruise ship injury cases are subject to unique procedural requirements that differ significantly from typical personal injury claims. Most cruise line ticket contracts contain specific provisions that affect your legal rights, including shortened time limits for providing written notice of your injury and filing lawsuits. Many ${cruiseLine.name} ticket contracts require injured passengers to notify the cruise line in writing within six months of the incident and file any lawsuit within one year. Additionally, forum selection clauses typically require lawsuits to be filed in federal court in Miami, Florida, regardless of where the passenger lives or where the cruise departed from.
+
+Our experienced maritime attorneys have successfully represented passengers injured on ${cruiseLine.name} and all other major cruise lines. We understand the complex legal landscape of cruise ship injury litigation and have the knowledge and resources to effectively pursue maximum compensation for your injuries. We work on a contingency fee basis, meaning you pay nothing upfront and we only collect a fee if we successfully recover compensation on your behalf. Contact us today for a free, no-obligation consultation to discuss your ${accident.name.toLowerCase()} claim and learn about your legal options.`;
+  };
+
+  // Generate accident-specific FAQs
+  const generateFAQs = (cruiseLine: CruiseLine, accident: AccidentType): FAQItem[] => {
+    const baseFAQs: FAQItem[] = [
+      {
+        question: `Can I sue ${cruiseLine.name} for ${accident.name.toLowerCase()}?`,
+        answer: `Yes, if ${cruiseLine.name} failed to maintain reasonably safe conditions, properly train staff, warn passengers of known hazards, or address dangerous conditions in a timely manner, you may have a valid maritime injury claim. Cruise lines owe passengers a duty of reasonable care under maritime law. This duty includes maintaining the ship and its equipment, providing adequate security, and taking reasonable steps to protect passengers from foreseeable harm. Our attorneys can evaluate the specific circumstances of your case to determine if the cruise line's negligence contributed to your injuries.`
+      },
+      {
+        question: `How long do I have to file a claim against ${cruiseLine.name} for ${accident.name.toLowerCase()}?`,
+        answer: `Time is critical in cruise ship injury cases. Most cruise line ticket contracts, including those for ${cruiseLine.name}, require written notice of your injury within six (6) months of the incident date. Additionally, lawsuits must typically be filed within one (1) year of the date of injury. These deadlines are significantly shorter than typical personal injury statutes of limitations. Some contracts may specify even shorter time periods. Failure to comply with these deadlines can result in permanent loss of your right to seek compensation. We strongly recommend contacting an attorney immediately after any cruise ship injury.`
+      },
+      {
+        question: `What compensation can I receive for my ${accident.name.toLowerCase()} on ${cruiseLine.name}?`,
+        answer: `Compensation in cruise ship injury cases may include economic and non-economic damages. Economic damages cover quantifiable losses such as medical expenses (both past and future), lost wages, diminished earning capacity, rehabilitation costs, and out-of-pocket expenses related to your injury. Non-economic damages include compensation for pain and suffering, emotional distress, loss of enjoyment of life, and inconvenience. In cases involving gross negligence, recklessness, or intentional misconduct by the cruise line, punitive damages may also be awarded to punish the wrongdoer and deter similar conduct in the future.`
+      },
+      {
+        question: `Where will my lawsuit against ${cruiseLine.name} be filed?`,
+        answer: `Most cruise line ticket contracts contain forum selection clauses that specify where lawsuits must be filed. For ${cruiseLine.name} and most major cruise lines, these clauses typically require lawsuits to be filed in the U.S. District Court for the Southern District of Florida in Miami, regardless of where the incident occurred, where you live, or where the cruise originated. This is due to the federal nature of maritime law and the cruise industry's concentration in South Florida. An experienced maritime attorney licensed to practice in this jurisdiction is essential for properly handling your claim.`
+      },
+      {
+        question: `What evidence is needed to prove ${cruiseLine.name} was responsible for my ${accident.name.toLowerCase()}?`,
+        answer: `To prove liability in a cruise ship injury case, you generally need evidence demonstrating that the cruise line was negligent and that this negligence caused your injuries. Key evidence may include: incident reports filed with ship security; photographs of the accident scene and hazardous conditions; witness statements from other passengers or crew; medical records documenting your injuries and treatment; surveillance footage from the ship; maintenance and inspection records for the area where the injury occurred; and expert testimony regarding safety standards and cruise line operations. Our attorneys work quickly to preserve this crucial evidence before it can be lost or destroyed.`
+      },
+      {
+        question: `What if I signed a liability waiver before my ${cruiseLine.name} cruise or shore excursion?`,
+        answer: `While cruise lines and excursion operators often require passengers to sign liability waivers, these documents are not absolute protection against all claims. Courts frequently find such waivers unenforceable in cases involving gross negligence, reckless conduct, intentional misconduct, or violations of maritime safety regulations. Additionally, waivers may not protect the cruise line for its own negligence or for failing to properly vet and supervise third-party excursion operators. Never assume a waiver bars your right to compensation. Our attorneys can review any waiver you signed and advise you on its potential impact on your claim.`
+      },
+      {
+        question: `Should I accept a settlement offer from ${cruiseLine.name} without consulting an attorney?`,
+        answer: `We strongly advise against accepting any settlement offer from ${cruiseLine.name} or their insurance representatives without first consulting an experienced maritime attorney. Cruise lines and their insurers often make quick, low settlement offers hoping injured passengers will accept before understanding the full extent of their injuries and legal rights. Once you accept a settlement and sign a release, you typically cannot seek additional compensation later, even if your injuries worsen or you discover additional damages. An attorney can evaluate whether an offer fairly compensates you for all your current and future losses and negotiate for a better settlement if appropriate.`
+      },
+      {
+        question: `How long does a ${accident.name.toLowerCase()} lawsuit against ${cruiseLine.name} typically take?`,
+        answer: `The timeline for resolving a cruise ship injury case varies depending on the complexity of the case, the severity of injuries, the cruise line's willingness to negotiate, and court scheduling. Straightforward cases with clear liability and moderate injuries may settle within 6-12 months. More complex cases involving catastrophic injuries, disputed liability, or the need for extensive expert testimony may take 1-3 years to resolve. Cases that proceed to trial generally take longer than those that settle. Throughout the process, we work diligently to move your case forward as efficiently as possible while ensuring we pursue maximum compensation for your injuries.`
+      }
+    ];
+    return baseFAQs;
+  };
+
+  // Generate timeline specific to accident type
+  const generateTimeline = (accident: AccidentType): string[] => {
+    const baseTimeline = [
+      "Seek immediate medical attention onboard and document all injuries thoroughly",
+      "Report the incident to ship security immediately and obtain a copy of the incident report",
+      "Collect contact information from any witnesses who saw the accident occur",
+      "Photograph the accident scene, hazardous conditions, and any visible injuries",
+      "Preserve all evidence including clothing worn at the time and personal belongings",
+      "Document all medical treatment received onboard and request copies of medical records",
+      "Contact an experienced maritime injury attorney before speaking with cruise line representatives",
+      "File required written notice of claim within the six-month deadline specified in your ticket contract",
+      "Continue all recommended medical treatment and maintain detailed records of expenses",
+      "Lawsuit filed in appropriate federal court venue if fair settlement cannot be reached"
+    ];
+    return baseTimeline;
+  };
+
   return {
     cruiseLine,
     accident,
-    intro: `If you suffered ${accident.name.toLowerCase()} while sailing with ${cruiseLine.name}, you may have a legal claim. Cruise lines have a duty to maintain safe conditions for passengers, and failures can result in compensation for medical bills, lost income, and pain and suffering.`,
-    ctaLabel: "Get Free Case Review",
-    faqs: [
-      {
-        question: `Can I sue ${cruiseLine.name} for ${accident.name.toLowerCase()}?`,
-        answer: `Yes, if ${cruiseLine.name} failed to maintain safe conditions or properly warn passengers of known hazards, you may have a valid maritime injury claim. Cruise lines owe passengers a duty of reasonable care under maritime law.`
-      },
-      {
-        question: "How long do I have to file a claim?",
-        answer: "Cruise line ticket contracts typically require written notice within 6 months and lawsuits filed within 1 year of the incident. Some contracts specify shorter time limits, so consult an attorney immediately."
-      },
-      {
-        question: "What compensation can I receive?",
-        answer: "Compensation may include medical expenses (past and future), lost wages, diminished earning capacity, pain and suffering, emotional distress, and in some cases, punitive damages."
-      },
-      {
-        question: "Where will my lawsuit be filed?",
-        answer: "Most cruise line tickets specify the venue for lawsuits, often federal court in Miami, Florida, regardless of where the incident occurred or where you live. An experienced maritime attorney can navigate these requirements."
-      },
-      {
-        question: "What if I signed a waiver?",
-        answer: "Cruise line waivers are not absolute protection. Courts often find waivers unenforceable for gross negligence, intentional misconduct, or violations of maritime safety regulations. Never assume a waiver bars your claim."
-      }
-    ],
+    intro: generateComprehensiveIntro(cruiseLine, accident),
+    ctaLabel: `Get Free Case Review for Your ${accident.name} on ${cruiseLine.name}`,
+    faqs: generateFAQs(cruiseLine, accident),
     sources: [
       { title: "Maritime Law - Cruise Line Passenger Rights", url: "https://www.maritimelaw.org" },
       { title: "CDC Vessel Sanitation Program", url: "https://www.cdc.gov/nceh/vsp" },
       { title: "CLIA - Cruise Industry Safety Standards", url: "https://www.cruising.org" },
       { title: "U.S. Coast Guard Cruise Ship Safety" }
     ],
-    timeline: [
-      "Seek immediate medical attention and document all injuries",
-      "Report the incident to ship security and obtain a copy of the report",
-      "Collect witness contact information and photograph the scene",
-      "Consult a maritime injury attorney before speaking with cruise line representatives",
-      "File required notice of claim within the contract time limits",
-      "Preserve all evidence including medical records and expenses",
-      "Lawsuit filed in appropriate venue if settlement not reached"
-    ],
+    timeline: generateTimeline(accident),
     liableParties: [
       `${cruiseLine.name} (primary carrier)`,
       "Third-party contractors and concessionaires",
       "Equipment manufacturers (for defective products)",
       "Shore excursion operators",
-      "Medical personnel (for malpractice claims)"
+      "Medical personnel (for malpractice claims)",
+      "Security companies contracted by cruise line",
+      "Port facility operators"
     ],
     disclaimer: "This information is provided for educational purposes only and does not constitute legal advice. Every case is unique. Consult a qualified maritime injury attorney for advice specific to your situation.",
     relatedAccidents

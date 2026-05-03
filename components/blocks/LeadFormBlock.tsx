@@ -60,12 +60,16 @@ export function LeadFormBlock() {
 
   if (status === "success") {
     return (
-      <section id="case-review" className="section alt">
-        <div className="container">
-          <div className="card" style={{ maxWidth: "600px", textAlign: "center", padding: "48px 24px" }}>
-            <div style={{ fontSize: "48px", marginBottom: "16px" }} aria-hidden="true">✓</div>
-            <h2 className="h2">Thank You!</h2>
-            <p style={{ color: "var(--color-muted)" }}>
+      <section id="case-review" className="section px-5vw" style={{ background: "var(--color-bg-secondary)" }}>
+        <div className="container" style={{ maxWidth: "600px" }}>
+          <div className="card" style={{ textAlign: "center", padding: "var(--space-12) var(--space-6)" }}>
+            <div style={{ 
+              fontSize: "64px", 
+              marginBottom: "var(--space-4)",
+              color: "var(--color-gold-500)"
+            }} aria-hidden="true">✓</div>
+            <h2 className="h2" style={{ marginBottom: "var(--space-4)" }}>Thank You!</h2>
+            <p style={{ color: "var(--color-text-tertiary)", lineHeight: "var(--leading-relaxed)" }}>
               Your case review request has been received. A maritime lawyer will contact you within 24 hours.
             </p>
           </div>
@@ -75,19 +79,25 @@ export function LeadFormBlock() {
   }
 
   return (
-    <section id="case-review" className="section alt">
-      <div className="container">
-        <h2 className="h2">Request Free Case Review</h2>
-        <p>Complete the form and a maritime lawyer will contact you within 24 hours.</p>
-        <form onSubmit={handleSubmit} className="card" style={{ maxWidth: "600px" }} aria-label="Case review request form">
+    <section id="case-review" className="section px-5vw" style={{ background: "var(--color-bg-secondary)" }}>
+      <div className="container" style={{ maxWidth: "600px" }}>
+        <div style={{ textAlign: "center", marginBottom: "var(--space-8)" }}>
+          <span className="tag" style={{ justifyContent: "center" }}>Free Consultation</span>
+          <h2 className="h2" style={{ marginTop: "var(--space-4)" }}>Request Free Case Review</h2>
+          <p style={{ color: "var(--color-text-tertiary)", marginTop: "var(--space-3)" }}>
+            Complete the form and a maritime lawyer will contact you within 24 hours. No obligation.
+          </p>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="card" aria-label="Case review request form">
           {status === "error" && (
             <div role="alert" style={{ 
-              background: "#fef2f2", 
-              border: "1px solid #dc2626", 
-              color: "#dc2626", 
-              padding: "12px 16px", 
-              borderRadius: "8px", 
-              marginBottom: "16px" 
+              background: "rgba(176, 64, 64, 0.15)", 
+              border: "1px solid rgba(224, 80, 80, 0.5)", 
+              color: "var(--color-danger-400)", 
+              padding: "var(--space-4)", 
+              borderRadius: "var(--radius-md)", 
+              marginBottom: "var(--space-5)" 
             }}>
               {errorMsg}
             </div>
@@ -167,8 +177,10 @@ export function LeadFormBlock() {
             type="submit" 
             disabled={status === "submitting"}
             aria-busy={status === "submitting"}
+            className="btn btn--primary btn--large"
+            style={{ width: "100%", marginTop: "var(--space-4)" }}
           >
-            {status === "submitting" ? "Submitting..." : "Submit for Review"}
+            {status === "submitting" ? "Submitting..." : "Submit for Free Review"}
           </button>
         </form>
       </div>

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CaseStudiesBlock } from "@/components/blocks/CaseStudiesBlock";
-import { CommonMistakesBlock } from "@/components/blocks/CommonMistakesBlock";
-import { DisclaimerBlock } from "@/components/blocks/DisclaimerBlock";
-import { EvidenceChecklistBlock } from "@/components/blocks/EvidenceChecklistBlock";
-import { FaqBlock } from "@/components/blocks/FaqBlock";
+import dynamic from "next/dynamic";
+
+// Above-fold components - loaded immediately
+import { BreadcrumbBlock } from "@/components/blocks/BreadcrumbBlock";
 import { JurisdictionAlertBlock } from "@/components/blocks/JurisdictionAlertBlock";
-import { LeadFormBlock } from "@/components/blocks/LeadFormBlock";
 import { LegalIntroBlock } from "@/components/blocks/LegalIntroBlock";
-import { LiabilityBlock } from "@/components/blocks/LiabilityBlock";
-import { RelatedLinksBlock } from "@/components/blocks/RelatedLinksBlock";
 import { SettlementValueBlock } from "@/components/blocks/SettlementValueBlock";
-import { SourcesBlock } from "@/components/blocks/SourcesBlock";
-import { TimelineCalculatorBlock } from "@/components/blocks/TimelineCalculatorBlock";
+
+// Below-fold components - lazy loaded
+const CaseStudiesBlock = dynamic(() => import("@/components/blocks/CaseStudiesBlock").then(m => m.CaseStudiesBlock));
+const CommonMistakesBlock = dynamic(() => import("@/components/blocks/CommonMistakesBlock").then(m => m.CommonMistakesBlock));
+const DisclaimerBlock = dynamic(() => import("@/components/blocks/DisclaimerBlock").then(m => m.DisclaimerBlock));
+const EvidenceChecklistBlock = dynamic(() => import("@/components/blocks/EvidenceChecklistBlock").then(m => m.EvidenceChecklistBlock));
+const FaqBlock = dynamic(() => import("@/components/blocks/FaqBlock").then(m => m.FaqBlock));
+const LeadFormBlock = dynamic(() => import("@/components/blocks/LeadFormBlock").then(m => m.LeadFormBlock));
+const LiabilityBlock = dynamic(() => import("@/components/blocks/LiabilityBlock").then(m => m.LiabilityBlock));
+const RelatedLinksBlock = dynamic(() => import("@/components/blocks/RelatedLinksBlock").then(m => m.RelatedLinksBlock));
+const SourcesBlock = dynamic(() => import("@/components/blocks/SourcesBlock").then(m => m.SourcesBlock));
+const TimelineCalculatorBlock = dynamic(() => import("@/components/blocks/TimelineCalculatorBlock").then(m => m.TimelineCalculatorBlock));
 import { accidentTypes, buildCruiseAccidentPageData, cruiseLines } from "@/data/site-data";
 import { buildCanonical, buildDescription, buildTitle, getLastUpdated } from "@/lib/seo";
 import { 
@@ -44,6 +50,9 @@ export function generateStaticParams() {
     }))
   );
 }
+
+// ISR: Revalidate every 24 hours for performance/scalability
+export const revalidate = 86400;
 
 export async function generateMetadata({ params }: { params: Promise<{ cruiseLine: string; accident: string }> }): Promise<Metadata> {
   const { cruiseLine, accident } = await params;
@@ -140,17 +149,41 @@ export default async function CruiseLineAccidentPage({ params }: { params: Promi
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(faqJsonLd)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeHtml(JSON.stringify(lastUpdatedJsonLd)) }} />
       
-      <section className="hero">
-        <div className="container">
-          <p className="small">/cruise-lines/{data.cruiseLine.slug}/{data.accident.slug}/</p>
-          <h1 className="h1">{data.cruiseLine.name} {data.accident.name} Settlements</h1>
-          <p>{data.accident.overview}</p>
-          <a className="cta-button" href="#case-review">{data.ctaLabel}</a>
-          <p className="small" style={{ marginTop: "16px", opacity: 0.7 }}>
-            Updated {lastUpdated} for 2026 cruise season
-          </p>
+      <header className="page-header">
+        <div className="page-header__inner container">
+          <div className="page-header__content">
+            <nav className="breadcrumb" aria-label="Breadcrumb">
+              <a href="/" className="breadcrumb__link">Home</a>
+              <span className="breadcrumb__sep">/</span>
+              <a href="/cruise-lines" className="breadcrumb__link">Cruise Lines</a>
+              <span className="breadcrumb__sep">/</span>
+              <a href={`/cruise-lines/${data.cruiseLine.slug}`} className="breadcrumb__link">{data.cruiseLine.name}</a>
+              <span className="breadcrumb__sep">/</span>
+              <span className="breadcrumb__current">{data.accident.name}</span>
+            </nav>
+
+            <span className="tag">Accident Claim</span>
+
+            <h1 className="page-header__title">{data.cruiseLine.name} {data.accident.name} <em className="text-accent">Legal Help</em></h1>
+
+            <p className="page-header__lead">{data.accident.overview}</p>
+
+            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginTop: "var(--space-6)" }}>
+              <a href="#case-review" className="btn btn--primary btn--large">{data.ctaLabel}</a>
+            </div>
+
+            <p className="text-body-sm mt-6" style={{ opacity: 0.7 }}>
+              Updated {lastUpdated} for 2026 cruise season
+            </p>
+          </div>
         </div>
-      </section>
+      </header>
+
+      <BreadcrumbBlock 
+        cruiseLineName={data.cruiseLine.name}
+        cruiseLineSlug={data.cruiseLine.slug}
+        accidentName={data.accident.name}
+      />
 
       <JurisdictionAlertBlock deadlineMonths={6} />
       
@@ -166,25 +199,49 @@ export default async function CruiseLineAccidentPage({ params }: { params: Promi
       
       <CaseStudiesBlock caseStudies={rotatedCaseStudies} />
       
-      <section className="section">
+      <section className="section px-5vw">
         <div className="container">
-          <h2 className="h2">{liabilityHeader}</h2>
-          <LiabilityBlock liableParties={data.liableParties} />
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Liability
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">{liabilityHeader}</h2>
+            </div>
+          </div>
+          <LiabilityBlock 
+            liableParties={data.liableParties}
+            cruiseLineName={data.cruiseLine.name}
+            accidentName={data.accident.name}
+          />
         </div>
       </section>
       
-      <section className="section alt">
+      <section className="section px-5vw" style={{ background: "var(--color-bg-secondary)" }}>
         <div className="container">
-          <h2 className="h2">{evidenceHeader}</h2>
-          <EvidenceChecklistBlock items={data.accident.evidenceChecklist} />
+          <div className="group-header">
+            <div>
+              <div className="group-header__cat">
+                Evidence
+                <span style={{ display: "block", width: "22px", height: "1px", background: "var(--color-gold-500)", opacity: 0.45 }}></span>
+              </div>
+              <h2 className="text-display-3">{evidenceHeader}</h2>
+            </div>
+          </div>
+          <EvidenceChecklistBlock 
+            items={data.accident.evidenceChecklist}
+            cruiseLineName={data.cruiseLine.name}
+            accidentName={data.accident.name}
+          />
         </div>
       </section>
       
-      <CommonMistakesBlock mistakes={rotatedMistakes} />
-      
-      <TimelineCalculatorBlock phases={timelinePhases} />
+      <CommonMistakesBlock cruiseLine={data.cruiseLine} accident={data.accident} />
 
-      <FaqBlock items={rotatedFAQs} />
+      <TimelineCalculatorBlock timeline={data.timeline} cruiseLineName={data.cruiseLine.name} accidentName={data.accident.name} />
+
+      <FaqBlock items={data.faqs} />
       
       <RelatedLinksBlock cruiseLine={data.cruiseLine} items={data.relatedAccidents} />
       
@@ -194,13 +251,18 @@ export default async function CruiseLineAccidentPage({ params }: { params: Promi
       
       <DisclaimerBlock text={data.disclaimer} />
       
-      <section className="section" style={{ background: "#f0fdf4" }}>
-        <div className="container">
-          <h2 className="h2">Ready to Pursue Your Claim?</h2>
-          <p>Don't wait until it's too late. The deadline to notify {data.cruiseLine.name} is approaching.</p>
-          <a className="cta-button" href="#case-review">{data.ctaLabel}</a>
-          <p className="small" style={{ marginTop: "16px" }}>Last updated: {lastUpdated}</p>
+      <section className="cta" aria-labelledby="accident-cta-heading">
+        <span className="tag" style={{ justifyContent: "center", display: "inline-flex" }}>Ready to Start?</span>
+        <h2 id="accident-cta-heading" className="cta__title">
+          Ready to Pursue Your Claim <em className="text-accent">against {data.cruiseLine.name}?</em>
+        </h2>
+        <p className="cta__text">
+          Don't wait until it's too late. If you suffered {data.accident.name.toLowerCase()} on {data.cruiseLine.name}, you may be entitled to significant compensation. The deadline to notify {data.cruiseLine.name} of your injury is approaching.
+        </p>
+        <div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="#case-review" className="btn btn--primary btn--large">Get Free Case Review for Your {data.accident.name}</a>
         </div>
+        <p className="text-body-sm mt-6">Last updated: {lastUpdated} | Maritime Legal Review Board</p>
       </section>
       
       {issues.length > 0 && (

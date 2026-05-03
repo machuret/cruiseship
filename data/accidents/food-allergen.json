@@ -1,0 +1,13 @@
+{
+  "slug": "food-allergen",
+  "name": "Unsafe Food Allergen Exposure",
+  "overview": "Cruise lines must properly label and handle food allergens; failures can cause severe allergic reactions including anaphylaxis.",
+  "evidenceChecklist": [
+    "Menu and ingredient documentation",
+    "Staff communication about allergies",
+    "Medical treatment records",
+    "Ship's food handling protocols",
+    "Previous allergy incident reports"
+  ],
+  "riskFactors": ["Inadequate allergen labeling", "Cross-contamination", "Staff training gaps", "Failure to verify ingredients"]
+}

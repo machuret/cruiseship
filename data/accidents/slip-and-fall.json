@@ -1,0 +1,13 @@
+{
+  "slug": "slip-and-fall",
+  "name": "Slip and Fall on Wet Decks",
+  "overview": "Slip and fall accidents on cruise ships often occur on wet decks, pool areas, and dining venues due to poor maintenance or inadequate warning signage.",
+  "evidenceChecklist": [
+    "Photos of the accident scene showing the hazard",
+    "Witness contact information",
+    "Incident report filed with ship security",
+    "Medical records from ship doctor",
+    "Surveillance footage request"
+  ],
+  "riskFactors": ["Wet or slippery deck surfaces", "Inadequate warning signage", "Poor lighting conditions", "Worn or damaged flooring materials"]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "falling-objects",
+  "name": "Falling Objects / Luggage Injuries",
+  "overview": "Injuries from falling luggage, equipment, or unsecured items can occur in cabins, storage areas, or during rough seas.",
+  "evidenceChecklist": [
+    "Photos of object and storage area",
+    "Securement procedures documentation",
+    "Weather conditions if relevant",
+    "Witness statements",
+    "Similar falling object incidents"
+  ],
+  "riskFactors": ["Improperly secured luggage", "Overhead bin failures", "Stacked items in storage", "Rough weather conditions"]
+}

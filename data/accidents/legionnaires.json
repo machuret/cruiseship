@@ -1,0 +1,13 @@
+{
+  "slug": "legionnaires",
+  "name": "Legionnaires' Disease Exposure",
+  "overview": "Legionella bacteria in cruise ship water systems can cause severe pneumonia-like illness, particularly affecting older passengers.",
+  "evidenceChecklist": [
+    "Medical diagnosis documentation",
+    "Ship water system test results if available",
+    "Cabin location and ventilation details",
+    "Other passenger illness reports",
+    "Public health investigation records"
+  ],
+  "riskFactors": ["Contaminated water systems", "Poor ventilation maintenance", "Age-related vulnerability", "Inadequate testing protocols"]
+}

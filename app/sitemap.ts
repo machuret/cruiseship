@@ -3,19 +3,30 @@ import { cruiseLines, accidentTypes, destinations } from "@/data/site-data";
 
 const BASE_URL = "https://cruiseshipinjurycases.com";
 
+// Cache the sitemap to avoid regeneration
+let cachedSitemap: MetadataRoute.Sitemap | null = null;
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Return cached sitemap if available
+  if (cachedSitemap) {
+    return cachedSitemap;
+  }
+  
+  // Use a single date for all entries to avoid expensive Date() calls
+  const lastMod = new Date();
+  
   const routes: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
-    { url: `${BASE_URL}/cruise-lines`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/injuries`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE_URL}/destinations`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: BASE_URL, lastModified: lastMod, changeFrequency: "daily", priority: 1 },
+    { url: `${BASE_URL}/cruise-lines`, lastModified: lastMod, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/injuries`, lastModified: lastMod, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/destinations`, lastModified: lastMod, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   // Cruise line hub pages
   cruiseLines.forEach((line) => {
     routes.push({
       url: `${BASE_URL}/cruise-lines/${line.slug}`,
-      lastModified: new Date(),
+      lastModified: lastMod,
       changeFrequency: "weekly",
       priority: 0.7
     });
@@ -26,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     accidentTypes.forEach((accident) => {
       routes.push({
         url: `${BASE_URL}/cruise-lines/${line.slug}/${accident.slug}`,
-        lastModified: new Date(),
+        lastModified: lastMod,
         changeFrequency: "weekly",
         priority: 0.6
       });
@@ -37,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   destinations.forEach((dest) => {
     routes.push({
       url: `${BASE_URL}/destinations/${dest.slug}`,
-      lastModified: new Date(),
+      lastModified: lastMod,
       changeFrequency: "weekly",
       priority: 0.7
     });
@@ -48,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     accidentTypes.forEach((accident) => {
       routes.push({
         url: `${BASE_URL}/destinations/${dest.slug}/${accident.slug}`,
-        lastModified: new Date(),
+        lastModified: lastMod,
         changeFrequency: "weekly",
         priority: 0.6
       });
@@ -59,11 +70,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   accidentTypes.forEach((accident) => {
     routes.push({
       url: `${BASE_URL}/injuries/${accident.slug}`,
-      lastModified: new Date(),
+      lastModified: lastMod,
       changeFrequency: "weekly",
       priority: 0.7
     });
   });
 
+  // Cache and return
+  cachedSitemap = routes;
   return routes;
 }

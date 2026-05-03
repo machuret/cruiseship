@@ -1,0 +1,13 @@
+{
+  "slug": "spa-injury",
+  "name": "Spa Treatment Injuries",
+  "overview": "Spa injuries can result from improper massage techniques, hot stone burns, facial treatment reactions, or equipment malfunction.",
+  "evidenceChecklist": [
+    "Treatment documentation and products used",
+    "Therapist credentials",
+    "Pre-treatment screening records",
+    "Photos of any visible injuries",
+    "Follow-up treatment records"
+  ],
+  "riskFactors": ["Improper massage techniques", "Excessive heat application", "Allergic reactions to products", "Untrained staff"]
+}

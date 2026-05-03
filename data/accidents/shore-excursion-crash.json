@@ -1,0 +1,13 @@
+{
+  "slug": "shore-excursion-crash",
+  "name": "Shore Excursion Transportation Crashes",
+  "overview": "Bus, van, and boat accidents during shore excursions can result in serious injuries with complex liability involving cruise lines and local operators.",
+  "evidenceChecklist": [
+    "Police reports from local authorities",
+    "Excursion operator information",
+    "Driver credentials if available",
+    "Vehicle condition photos",
+    "Other passenger contact information"
+  ],
+  "riskFactors": ["Negligent drivers", "Poor vehicle maintenance", "Dangerous road conditions", "Lack of safety equipment"]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "man-overboard",
+  "name": "Overboard and Man-Overboard Events",
+  "overview": "Falling overboard from a cruise ship often results in death or serious injury, raising questions about railing heights and surveillance.",
+  "evidenceChecklist": [
+    "Railing height measurements",
+    "Surveillance system capabilities",
+    "Overboard detection technology",
+    "Search and rescue response time",
+    "Similar overboard incidents"
+  ],
+  "riskFactors": ["Inadequate railing heights", "Poor surveillance coverage", "Lack of overboard detection", "Delayed search response"]
+}

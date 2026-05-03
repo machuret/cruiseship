@@ -1,0 +1,13 @@
+{
+  "slug": "pool-deck-fall",
+  "name": "Pool Deck Fall Injuries",
+  "overview": "Pool deck falls frequently result from slippery surfaces, inadequate non-slip materials, or poor drainage around pool areas on cruise ships.",
+  "evidenceChecklist": [
+    "Photos of pool deck showing slippery conditions",
+    "Documentation of drainage issues",
+    "Witness statements",
+    "Medical treatment records",
+    "Comparison photos of proper non-slip surfaces"
+  ],
+  "riskFactors": ["Wet pool deck surfaces", "Inadequate non-slip materials", "Poor drainage", "High foot traffic areas"]
+}

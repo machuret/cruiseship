@@ -1,0 +1,13 @@
+{
+  "slug": "cabin-fixture",
+  "name": "Bunk Bed / Cabin Fixture Injuries",
+  "overview": "Cabin fixture injuries include falls from bunk beds, shower slip-and-falls, and injuries from improperly maintained furniture.",
+  "evidenceChecklist": [
+    "Photos of cabin and fixture involved",
+    "Maintenance request history",
+    "Cabin deck plans",
+    "Similar cabin configuration incidents",
+    "Medical documentation"
+  ],
+  "riskFactors": ["Defective bunk bed ladders", "Inadequate guardrails", "Slippery shower surfaces", "Poor cabin maintenance"]
+}

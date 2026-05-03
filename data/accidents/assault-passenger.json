@@ -1,0 +1,13 @@
+{
+  "slug": "assault-passenger",
+  "name": "Assault by Passenger",
+  "overview": "Passenger-on-passenger assaults raise questions about ship security, alcohol service policies, and adequate monitoring.",
+  "evidenceChecklist": [
+    "Security incident reports",
+    "Witness contact information",
+    "Surveillance footage",
+    "Assailant identification",
+    "Security response timeline"
+  ],
+  "riskFactors": ["Excessive alcohol service", "Inadequate security presence", "Poor lighting in public areas", "Insufficient monitoring"]
+}

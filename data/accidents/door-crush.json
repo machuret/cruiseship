@@ -1,0 +1,13 @@
+{
+  "slug": "door-crush",
+  "name": "Door Crush Injuries",
+  "overview": "Automatic door malfunctions, heavy watertight doors, and elevator door failures can cause crushing injuries on cruise ships.",
+  "evidenceChecklist": [
+    "Door type and maintenance records",
+    "Sensor functionality documentation",
+    "Photos of door and surrounding area",
+    "Similar door incident reports",
+    "Safety inspection records"
+  ],
+  "riskFactors": ["Faulty door sensors", "Inadequate maintenance", "Heavy watertight doors", "Malfunctioning automatic systems"]
+}

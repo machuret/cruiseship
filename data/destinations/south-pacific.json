@@ -1,0 +1,6 @@
+{
+  "slug": "south-pacific",
+  "name": "South Pacific",
+  "description": "Remote island destinations including Tahiti and Fiji",
+  "ports": ["Tahiti", "Moorea", "Bora Bora", "Fiji", "Samoa"]
+}

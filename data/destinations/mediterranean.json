@@ -1,0 +1,6 @@
+{
+  "slug": "mediterranean",
+  "name": "Mediterranean",
+  "description": "Historic European destinations with rich cultural heritage",
+  "ports": ["Barcelona", "Rome", "Athens", "Santorini", "Naples"]
+}
